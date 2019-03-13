@@ -22,26 +22,13 @@ cd TDT4145-GR115
 
 #### Build - production
 
-Build project,
+Run project,
 
 ```sh
-npm run build ?
+run app
 ```
 
-
-A dev server will open locally on port 3000. The content on this server can be accessed in any browser by navigating to the URL:
-
-```sh
-http://localhost:3000
-```
-
-#### Development
-
-Run development script
-
-```sh
-npm run dev
-```
+This automatically starts the app in a java FX window
 
 ## Authors
 
