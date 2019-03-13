@@ -1,0 +1,1 @@
+//Denne Controlleren må håndere data inn og ut av fxml-appen

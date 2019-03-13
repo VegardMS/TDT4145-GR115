@@ -9,19 +9,13 @@ Project..
 Clone
 
 ```sh
-git clone
+git clone 'Repo name'
 ```
 
 change directory
 
 ```sh
-cd gruppe-115
-```
-
-install dependencies
-
-```sh
-npm install
+cd TDT4145-GR115
 ```
 
 ### Running
@@ -31,14 +25,9 @@ npm install
 Build project,
 
 ```sh
-npm run build
+npm run build ?
 ```
 
-Then you should be good to go.
-
-```sh
-npm start
-```
 
 A dev server will open locally on port 3000. The content on this server can be accessed in any browser by navigating to the URL:
 
