@@ -2,13 +2,6 @@
 
 Project..
 
-## Prerequisites
-
-To install, work on, and eventually deploy this software you need the following tools:
-
-* git
-
-
 ## Getting Started
 
 ### Installing
