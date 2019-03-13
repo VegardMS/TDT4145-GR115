@@ -15,7 +15,7 @@ git clone
 change directory
 
 ```sh
-cd gruppe-70
+cd gruppe-115
 ```
 
 install dependencies
