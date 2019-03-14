@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8824d3f-025d-46d1-9cf3-4b6ec3eb7965" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/config/Tilhører.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/config/reg_ovelse.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
