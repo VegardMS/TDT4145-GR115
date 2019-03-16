@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
  
-//This file runs the views.fxml file
+//This file runs the mainscreen.fxml file
 public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("views.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainscreen.fxml"));
         Pane root = fxmlLoader.load();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.8" prefWidth="598.4" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.14138817480719795" layoutX="102.0" layoutY="34.0" orientation="VERTICAL" prefHeight="468.8" prefWidth="598.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="100.0" layoutY="32.0" prefHeight="63.2" prefWidth="596.8" text="Legg inn øvelse:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextField fx:id="navnfield" layoutX="193.0" layoutY="37.0" />
+                  <TextField fx:id="kilofield" layoutX="193.0" layoutY="87.0" />
+                  <TextField fx:id="settfield" layoutX="193.0" layoutY="138.0" />
+                  <TextField fx:id="beskrivelsefield" layoutX="193.0" layoutY="186.0" />
+                  <Button fx:id="registrerbutton" layoutX="192.0" layoutY="241.0" mnemonicParsing="false" onAction="#registrerbutton" prefHeight="26.0" prefWidth="149.0" text="Legg inn" />
+                  <Label layoutX="96.0" layoutY="41.0" prefHeight="18.0" prefWidth="50.0" text="Navn" />
+                  <Label layoutX="96.0" layoutY="91.0" text="Antall kilo" />
+                  <Label layoutX="96.0" layoutY="142.0" text="Antall sett" />
+                  <Label layoutX="96.0" layoutY="190.0" text="Beskrivelse" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
