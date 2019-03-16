@@ -2,11 +2,9 @@ import java.sql.DriverManager;
 import java.util.Properties;
 import java.sql.Connection;
 
-
-
-public abstract class Connecting {
+public abstract class DBConn {
     protected Connection conn;
-    public Connecting () {
+    public DBConn() {
     }
 
     public void connect() {
