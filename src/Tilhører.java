@@ -19,53 +19,44 @@ public class Tilhører extends DBConn {
 
     public void kobleSammen(){
         connect();
+
         try{
-            String gruppeID = "SELECT GruppeID FROM Ovelsesgruppe WHERE Beskrivelse ='" + this.gruppe +"';";
-
-            PreparedStatement gr = conn.prepareStatement(gruppeID);
-
-            ResultSet sr = gr.executeQuery(gruppeID);
 
 
-            String øvelseID = "SELECT ØvelseID FROM Øvelse WHERE Navn ='" + this.øvelse +"';";
+            String query = "SELECT GruppeID FROM Ovelsesgruppe Where Beskrivelse ='" + this.gruppe + "';";
+            PreparedStatement st2 = conn.prepareStatement(query);
+            ResultSet sr = st2.executeQuery(query);
 
 
-            PreparedStatement or = conn.prepareStatement(øvelseID);
-
-
-
-            ResultSet rs = or.executeQuery(øvelseID);
-            int ØvelseID = 0;
-            int GruppeID = 0;
+            String query2 = "SELECT ØvelseID FROM Øvelse Where Navn ='" + this.øvelse + "';";
+            PreparedStatement st3 = conn.prepareStatement(query2);
+            ResultSet rs = st3.executeQuery(query2);
 
 
 
+            int ØID = 0;
+            int GID = 0;
             while (rs.next()){
-                ØvelseID = rs.getInt("ØvelsesID");
+                ØID = rs.getInt("ØvelseID");
+
             }
 
-            while (sr.next()){
-                GruppeID = sr.getInt("GruppeID");
+            while(sr.next()){
+                GID = sr.getInt("GruppeID");
+
             }
 
 
-            System.out.println(ØvelseID);
-            System.out.println(GruppeID);
-            System.out.println("hola");
+            ps = conn.prepareStatement("INSERT INTO Tilhører(ØvelseID,GruppeID) VALUES ((?),(?))");
 
-
-
-
-            ps = conn.prepareStatement("INSERT INTO tilhører(ØvelsesID,ØvelsesgruppeID) VALUES ((?),(?))");
-
-            ps.setInt(1, ØvelseID);
-            ps.setInt(2,GruppeID);
+            ps.setInt(1, ØID);
+            ps.setInt(2,GID);
 
             ps.execute();
             conn.close();
 
         }catch (Exception e){
-            System.out.println("Det skjedde en feil");
+            System.out.println("Det skjedde en feil " + e);
 
         }
 
