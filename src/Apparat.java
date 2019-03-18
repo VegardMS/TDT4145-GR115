@@ -1,10 +1,6 @@
-
-
-
-
 import java.sql.PreparedStatement;
 
-public class Apparat extends Connecting {
+public class Apparat extends DBConn {
 	private PreparedStatement rs;
 	private String navn;
 	private String funksjon;

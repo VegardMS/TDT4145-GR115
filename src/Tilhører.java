@@ -1,7 +1,7 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Tilhører extends Connecting {
+public class Tilhører extends DBConn {
 
 
     private PreparedStatement ps;

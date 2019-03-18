@@ -4,14 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 
-public class Øvelsesgruppe extends Connecting{
+public class Øvelsesgruppe extends DBConn{
     private PreparedStatement ps;
     private String beskrivelse;
     private String øvelseNavn;
-
-
-
-
 
     public Øvelsesgruppe(String beskrivelse) {
 

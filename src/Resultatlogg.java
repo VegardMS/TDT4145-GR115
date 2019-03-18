@@ -1,10 +1,8 @@
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Resultatlogg extends Connecting{
+public class Resultatlogg extends DBConn{
 	private PreparedStatement ps;
 	private ResultSet rs;
 	private String result;

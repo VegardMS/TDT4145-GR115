@@ -1,5 +1,3 @@
-package database_treningdagbok;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

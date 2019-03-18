@@ -1,10 +1,8 @@
-
-
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
 
-public class Treningsøkt extends Connecting{
+public class Treningsøkt extends DBConn {
 	private PreparedStatement rs;
 	private int personligForm;
 	private int prestasjon;
