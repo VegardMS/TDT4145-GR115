@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8824d3f-025d-46d1-9cf3-4b6ec3eb7965" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Tilhører.java" afterPath="$PROJECT_DIR$/src/Tilhører.java" />
+      <change beforePath="$PROJECT_DIR$/src/Øvelsesgruppe.java" afterPath="$PROJECT_DIR$/src/Øvelsesgruppe.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +35,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tilhører.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tilhører.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tilhører.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Øvelsesgruppe.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Øvelsesgruppe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,6 +90,7 @@
         <option value="$PROJECT_DIR$/src/config/Øvelsesgruppe.java" />
         <option value="$PROJECT_DIR$/src/config/Tilhører.java" />
         <option value="$PROJECT_DIR$/src/Tilhører.java" />
+        <option value="$PROJECT_DIR$/src/Øvelsesgruppe.java" />
       </list>
     </option>
   </component>
@@ -380,8 +393,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tilhører.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Øvelsesgruppe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

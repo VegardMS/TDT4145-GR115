@@ -1,13 +1,17 @@
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Time;
 
-public class Øvelsesgruppe extends DBConn{
+public class Øvelsesgruppe extends DBConn {
     private PreparedStatement ps;
     private String beskrivelse;
     private String øvelseNavn;
+    private int id;
+    private PreparedStatement pre;
+
+
+
+
 
     public Øvelsesgruppe(String beskrivelse) {
 
@@ -16,25 +20,34 @@ public class Øvelsesgruppe extends DBConn{
         registrerGruppe();
     }
     public void registrerGruppe() {
+
         connect();
 
-        String query = "SELECT * FROM Ovelsesgruppe WHERE beskrivelse=(?)" ;
+        String query = "SELECT * FROM Ovelsesgruppe WHERE Beskrivelse=(?)" ; //WHERE beskrivelse=(?)
         try {
-            ps = conn.prepareStatement("INSERT INTO Ovelsesgruppe(beskrivelse) VALUES ( (?))");
+            ps = conn.prepareStatement("INSERT INTO Ovelsesgruppe (Beskrivelse) VALUES (?)");
             ps.setString(1, this.beskrivelse);
 
 
-            ResultSet rs = ps.executeQuery(query);
-            String duplicate = rs.getString("beskrivelse");
+            String query2 = "SELECT * FROM Ovelsesgruppe Where Beskrivelse ='" + this.beskrivelse + "';";
+            PreparedStatement st3 = conn.prepareStatement(query2);
+            ResultSet rs = st3.executeQuery(query2);
+            String duplicate = " ";
 
-            if (beskrivelse == duplicate) {
+            while(rs.next()){
+                duplicate = rs.getString("Beskrivelse");
+            }
+
+            if (beskrivelse == duplicate){
                 return;
             }
 
             ps.execute();
+
+
         }
         catch (Exception e) {
-            System.out.println("db error during prepare of insert into treningsokt"+e);
+            System.out.println("db error during prepare of insert into treningsokt " + e);
         }
     }
 
@@ -42,8 +55,9 @@ public class Øvelsesgruppe extends DBConn{
 
 
 
+
     public static void main(String[] args) {
-        Øvelsesgruppe og = new Øvelsesgruppe("kondisjon");
+        Øvelsesgruppe og = new Øvelsesgruppe("tut og kjør");
 
     }
 
