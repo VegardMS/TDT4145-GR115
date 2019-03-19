@@ -1,3 +1,4 @@
+package src;
 import java.sql.PreparedStatement;
 
 public class Apparat extends DBConn {
