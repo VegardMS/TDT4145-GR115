@@ -56,10 +56,22 @@ public class Main extends DBConn{
     }
 
     public void registrerApparat(){
+    	System.out.println("Registrer et nytt apparat ved å legge inn følgende:");
+    	System.out.println("Navn: ");
+    	String navn = sc.nextLine();
+    	System.out.println("Funksjon: ");
+    	String funksjon = sc.nextLine();
+    	
+    System.out.println("Du har registrert følgende: \n \n" +
+				"Navn: " + navn + "\n" +
+				"Funksjon: " + funksjon + "\n");
+    	
+    	Apparat a = new Apparat(navn, funksjon);
 
     }
 
     public void registrerOvelse(){
+    	
 
     }
     
