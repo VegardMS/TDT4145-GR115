@@ -29,7 +29,7 @@ public class Treningsokt extends DBConn {
 	public void registrerOkt() {
 		connect();
 		try {
-			rs = conn.prepareStatement("INSERT INTO Trenings¯kt (Dato, Tid, Varighet, PersonligForm, Prestasjon, Notat) VALUES ((?), (?), (?), (?), (?), (?))");
+			rs = conn.prepareStatement("INSERT INTO Trenings√∏kt (Dato, Tid, Varighet, PersonligForm, Prestasjon, Notat) VALUES ((?), (?), (?), (?), (?), (?))");
 
 			rs.setDate(1, Date.valueOf(this.dato));
 			rs.setTime(2, this.tid);
@@ -40,7 +40,7 @@ public class Treningsokt extends DBConn {
 			rs.execute();
 		}
 		catch (Exception e) {
-			System.out.println("db error during prepare of insert into trenings¯kt"+e);
+			System.out.println("db error during prepare of insert into trenings√∏kt"+e);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class Treningsokt extends DBConn {
 
 		try {
 
-			String query = "SELECT TreningsÿktID FROM Trenings¯kt Where Dato ='" + this.dato + "And Tid =" + this.tid +"';";
+			String query = "SELECT Trenings√∏ktID FROM Trenings√∏kt Where Dato ='" + this.dato + "And Tid =" + this.tid +"';";
 			PreparedStatement st2 = conn.prepareStatement(query);
 			ResultSet res = st2.executeQuery(query);
 
@@ -58,25 +58,25 @@ public class Treningsokt extends DBConn {
 			Integer OvelseID = null;
 
 
-			String query2 = "SELECT ÿvelseID FROM ÿvelse Where Navn ='" + Ovelse + "';";
+			String query2 = "SELECT √∏velseID FROM √∏velse Where Navn ='" + Ovelse + "';";
 			PreparedStatement st3 = conn.prepareStatement(query2);
 			ResultSet pes = st3.executeQuery(query2);
 
 			while(res.next()){
-				OktID = res.getInt("TreningsÿktID");
+				OktID = res.getInt("Trenings√∏ktID");
 			}
 
 			while(pes.next()){
-				OvelseID = pes.getInt("ÿvelseID");
+				OvelseID = pes.getInt("√∏velseID");
 			}
 
 			if(OktID.equals(null)|| OvelseID.equals(null)){
-				throw new IllegalArgumentException("Du mÂ registrere ÿvelsen f¯rst!");
+				throw new IllegalArgumentException("Du m√• registrere √∏velsen f√∏rst!");
 			}
 			System.out.println(OktID);
 			System.out.println(OvelseID);
 
-			prep = conn.prepareStatement("INSERT†INTO†Inneholderÿvelse(TreningsÿktID,ÿvelseID) VALUES ((?),(?))");
+			prep = conn.prepareStatement("INSERT * INTO Inneholder@velse(Trenings√∏ktID,√òvelseID) VALUES ((?),(?))");
 			prep.setInt(1,OktID);
 			prep.setInt(2,OvelseID);
 
@@ -117,8 +117,8 @@ public class Treningsokt extends DBConn {
 		LocalDate d = LocalDate.of(2028,03,19);
 		System.out.println(d);
 		Time t = new Time(8,42,00);
-		Treningsokt t4 = new Treningsokt(d, t, 55, 9, 9, "Fikk gnagsÂr");
-		t4.leggTilOvelse("Kneb¯y");
+		Treningsokt t4 = new Treningsokt(d, t, 55, 9, 9, "Fikk gnags√•r");
+		t4.leggTilOvelse("Kneb√∏y");
 
 
 	}
