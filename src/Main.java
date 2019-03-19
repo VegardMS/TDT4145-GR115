@@ -1,37 +1,64 @@
 package src;
 
+import java.sql.Time;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Main {
+public class Main extends DBConn{
     Scanner sc = new Scanner(System.in);
 
-    public void registrerTrenings√∏kt(){
-    	System.out.println("Registrer en ny trenings√∏kt ved √• fylle inn disse feltene:");
-    	System.out.println("Dato (√Ö√Ö√Ö√Ö-MM-DD): ");
-    	String dato = sc.nextLine();
+    public void registrerTreningsokt() throws ParseException{
+    	System.out.println("Registrer en ny trenings¯kt ved Â fylle inn disse feltene: ");
+    	
+    	//Henter inn dato fra bruker og oppretter nytt LocalDate-objekt
+    	System.out.println("Dato (≈≈≈≈-MM-DD): ");
+    	String datoString = sc.nextLine();
+    	String[] numbers = datoString.split("-");
+    	int[] ints = new int[numbers.length];
+    	for(int c = 0; c < numbers.length; c++) ints[c] = Integer.parseInt(numbers[c]);
+		LocalDate dato = LocalDate.of(ints[0], ints[1], ints[2]);
+    	
+		//Henter inn tidspunkt fra bruker og oppretter nytt Time-objekt
     	System.out.println("Klokkeslett (TT:MM:SS): ");
-    	String tid = sc.nextLine();
+    	String tidString = sc.nextLine();
+    	String[] numbers1 = tidString.split(":");
+    	int[] ints1 = new int[numbers1.length];
+    	for(int d = 0; d < numbers1.length; d++) ints1[d] = Integer.parseInt(numbers1[d]);
+		Time tid = new Time(ints1[0], ints1[1], ints1[2]);
+    	
     	System.out.println("Varighet (Minutter): ");
     	int varighet = sc.nextInt();
+    	
     	System.out.println("Personlig form (Heltall mellom 0 og 10): ");
     	int form = sc.nextInt();
+    	
     	System.out.println("Prestasjon (Heltall mellom 0 og 10): ");
     	int prestasjon = sc.nextInt();
-    	System.out.println("Notat: ");
+    	
+    	System.out.println("Notat (Maks x symboler): ");
     	String notat = sc.nextLine();
+    	
     	System.out.println();
     	
-    	System.out.println(dato+tid+Integer.toString(varighet)+ Integer.toString(form) + Integer.toString(prestasjon) + notat);
+    	System.out.println("Du har registrert f¯lgende: \n \n" +
+    						"Dato: " + dato + "\n" +
+    						"Tid: " + tid + "\n" +
+    						"Varighet: " + Integer.toString(varighet) + "\n" +
+    						"Form: " + Integer.toString(form) + "\n" +
+    						"Prestasjon: " + Integer.toString(prestasjon) + "\n" +
+    						"Notat: "+ notat + "\n");
     	
+    	Treningsokt treningsokt = new Treningsokt(dato, tid, varighet, form, prestasjon, notat);
     	
-
+   
     }
 
     public void registrerApparat(){
 
     }
 
-    public void registrer√òvelse(){
+    public void registrerOvelse(){
 
     }
     
@@ -40,7 +67,7 @@ public class Main {
     }
     
 
-    public void registrer√òvelsesGruppe(){
+    public void registrerovelsesGruppe(){
 
     }
 
@@ -52,30 +79,30 @@ public class Main {
         Main m = new Main();
 
         while(true) {
-            System.out.println("Hei");
-            System.out.println("1 - Legg inn ny trenings√∏kt i databasen");
+            System.out.println("Hei, hva vil du gj¯re? \n");
+            System.out.println("1 - Legg inn ny trenings¯kt i databasen");
             System.out.println("2 - Legg inn nytt apparat i databasen");
-            System.out.println("3 - Legg inn ny √∏velse i databasen");
-            System.out.println("4 - Hent resultater for √∏velse");
-            System.out.println("5 - Registrer √∏velsesgruppe");
-            System.out.println("6 - Finn dine favoritt√∏velser");
+            System.out.println("3 - Legg inn ny ¯velse i databasen");
+            System.out.println("4 - Hent resultater for ¯velse");
+            System.out.println("5 - Registrer ¯velsesgruppe");
+            System.out.println("6 - Finn dine favoritt¯velser");
             System.out.println("Velg 1, 2, 3, 4, 5 eller 6");
             int scase = Integer.parseInt(m.sc.nextLine());
             switch (scase) {
                 case 1:
-                    m.registrerTrenings√∏kt();
+                    m.registrerTreningsokt();
                     break;
                 case 2:
                     m.registrerApparat();
                     break;
                 case 3:
-                    m.registrer√òvelse();
+                    m.registrerOvelse();
                     break;
                 case 4:
-                		m.hentResultater();
-                		break;
+                	m.hentResultater();
+                	break;
                 case 5:
-                    m.registrer√òvelsesGruppe();
+                    m.registrerovelsesGruppe();
                     break;
                 case 6:
                     m.finnFavoritt();

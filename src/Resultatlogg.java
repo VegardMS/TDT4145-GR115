@@ -10,13 +10,13 @@ public class Resultatlogg extends DBConn{
 	private PreparedStatement ps;
 	private ResultSet rs;
 	private String result = "";
-	private String øvelse;
+	private String Ovelse;
 	private Date fraDato;
 	private Date tilDato;
 	private char apparat;
 	
-	public Resultatlogg(String øvelse, Date fraDato, Date tilDato, char apparat) {
-		this.øvelse = øvelse;
+	public Resultatlogg(String Ovelse, Date fraDato, Date tilDato, char apparat) {
+		this.Ovelse = Ovelse;
 		this.fraDato = fraDato;
 		this.tilDato = tilDato;
 		this.apparat = apparat;
@@ -42,21 +42,21 @@ public class Resultatlogg extends DBConn{
 				+ " NATURAL JOIN Treningsøkt "
 				+ " NATURAL JOIN InneholderØvelse) "
 				+ "WHERE (Dato BETWEEN " + this.fraDato + " AND " + this.tilDato + ")"
-				+ " AND Navn ='" + this.øvelse + "';"; 
-		String periode = "Resultater for " + "'" + this.øvelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
+				+ " AND Navn ='" + this.Ovelse + "';"; 
+		String periode = "Resultater for " + "'" + this.Ovelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
 		System.out.println(periode);
 		try {
 			connect();
 			ps = conn.prepareStatement(query);
-			//ps.setString(1, this.øvelse);
+			//ps.setString(1, this.Ovelse);
 			this.rs = ps.executeQuery(query);
 			while (rs.next()){
-				//ps.setString(1, this.øvelse);
+				//ps.setString(1, this.Ovelse);
 				int vekt = rs.getInt("AntallKilo");
 				int sett = rs.getInt("AntallSett");
-				int økt = rs.getInt("TreningsøktID");
+				int Okt = rs.getInt("TreningsøktID");
 				
-				this.result = "\n" + "Økt:" + Integer.toString(økt) + " Antall kilo:" + Integer.toString(vekt) +  " Antall sett:" + Integer.toString(sett) + "\n";
+				this.result = "\n" + "Økt:" + Integer.toString(Okt) + " Antall kilo:" + Integer.toString(vekt) +  " Antall sett:" + Integer.toString(sett) + "\n";
 				//System.out.println(result);
 			}
 		}
@@ -69,11 +69,11 @@ public class Resultatlogg extends DBConn{
 	}
 	
 	public String hentResultatUtenApparat() {
-		String periode = "Resultater for " + "'" + this.øvelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
+		String periode = "Resultater for " + "'" + this.Ovelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
 		String query = "SELECT * FROM (Øvelse INNER JOIN ØvelseUtenApparat ON (Øvelse.ØvelseID = ØvelseUtenApparat.ØvelseID3))"
 				+ "NATURAL JOIN Treningsøkt "
 				+ "NATURAL JOIN InneholderØvelse) "
-				+ "WHERE Navn ='" + this.øvelse + "';"; 
+				+ "WHERE Navn ='" + this.Ovelse + "';"; 
 		connect();
 		try {
 			ps = conn.prepareStatement(query);
@@ -81,9 +81,9 @@ public class Resultatlogg extends DBConn{
 			
 			while (rs.next()) {
 				String beskrivelse = rs.getString("Beskrivelse");
-				int økt = rs.getInt("TreningsøktID");
+				int Okt = rs.getInt("TreningsøktID");
 				
-				this.result = "\n" + "Økt:" + Integer.toString(økt) + "Beskrivelse: " + beskrivelse;
+				this.result = "\n" + "Økt:" + Integer.toString(Okt) + "Beskrivelse: " + beskrivelse;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

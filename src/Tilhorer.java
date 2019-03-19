@@ -1,16 +1,17 @@
+package src;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Tilhører extends DBConn {
+public class Tilhorer extends DBConn {
 
 
     private PreparedStatement ps;
-    private String øvelse;
+    private String Ovelse;
     private String gruppe;
 
 
-    public Tilhører(String øvelse, String gruppe){
-        this.øvelse = øvelse;
+    public Tilhorer(String Ovelse, String gruppe){
+        this.Ovelse = Ovelse;
         this.gruppe = gruppe;
 
         kobleSammen();
@@ -28,16 +29,16 @@ public class Tilhører extends DBConn {
             ResultSet sr = st2.executeQuery(query);
 
 
-            String query2 = "SELECT ØvelseID FROM Øvelse Where Navn ='" + this.øvelse + "';";
+            String query2 = "SELECT ØvelseID FROM Øvelse Where Navn ='" + this.Ovelse + "';";
             PreparedStatement st3 = conn.prepareStatement(query2);
             ResultSet rs = st3.executeQuery(query2);
 
 
 
-            int ØID = 0;
+            int OID = 0;
             int GID = 0;
             while (rs.next()){
-                ØID = rs.getInt("ØvelseID");
+                OID = rs.getInt("ØvelseID");
 
             }
 
@@ -49,7 +50,7 @@ public class Tilhører extends DBConn {
 
             ps = conn.prepareStatement("INSERT INTO Tilhører(ØvelseID,GruppeID) VALUES ((?),(?))");
 
-            ps.setInt(1, ØID);
+            ps.setInt(1, OID);
             ps.setInt(2,GID);
 
             ps.execute();
@@ -65,7 +66,7 @@ public class Tilhører extends DBConn {
 
     public static void main(String[] args){
 
-        Tilhører tilhører = new Tilhører("Knebøy","Bein");
+        Tilhorer tilhorer = new Tilhorer("Knebøy","Bein");
     }
 
 

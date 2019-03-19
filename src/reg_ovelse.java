@@ -1,3 +1,5 @@
+package src;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,19 +38,19 @@ public class reg_ovelse extends DBConn{
 			this.st = conn.prepareStatement(query);
 			this.st.setString(1, this.name);
 			this.st.execute();
-			int øvelseID = 0;
+			int OvelseID = 0;
 			String query4 = "SELECT ØvelseID FROM Øvelse Where Navn ='" + this.name + "';";
 			PreparedStatement st2 = conn.prepareStatement(query4);
 			ResultSet rs = st2.executeQuery(query4);
 			while (rs.next()) {
-				øvelseID = rs.getInt("ØvelseID");
+				OvelseID = rs.getInt("ØvelseID");
 			}
 		
 			if (this.apparat == 'y') {
 
 				String query2 = "INSERT INTO OvelsePaApparat (ØvelseID, AntallKilo, AntallSett) VALUES ((?), (?), (?))";
 				this.st = conn.prepareStatement(query2);
-				this.st.setInt(1, øvelseID);
+				this.st.setInt(1, OvelseID);
 				this.st.setInt(2, this.kilo);
 				this.st.setInt(3, this.sett);
 				this.st.execute();
@@ -59,7 +61,7 @@ public class reg_ovelse extends DBConn{
 	
 				String query3 = "INSERT INTO ØvelseUtenApparat (ØvelseID, Beskrivelse) VALUES ((?), (?))";
 				this.st = conn.prepareStatement(query3);
-				this.st.setInt(1, øvelseID);
+				this.st.setInt(1, OvelseID);
 				this.st.setString(2, this.beskrivelse);
 				this.st.execute();
 				

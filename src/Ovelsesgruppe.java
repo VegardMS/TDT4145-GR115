@@ -1,19 +1,17 @@
+package src;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Ã˜velsesgruppe extends DBConn {
+public class Ovelsesgruppe extends DBConn {
     private PreparedStatement ps;
     private String beskrivelse;
-    private String Ã¸velseNavn;
+    private String OvelseNavn;
     private int id;
     private PreparedStatement pre;
 
 
-
-
-
-    public Ã˜velsesgruppe(String beskrivelse) {
+    public Ovelsesgruppe(String beskrivelse) {
 
         this.beskrivelse = beskrivelse;
 
@@ -23,13 +21,13 @@ public class Ã˜velsesgruppe extends DBConn {
 
         connect();
 
-        String query = "SELECT * FROM Ovelsesgruppe WHERE Beskrivelse=(?)" ; //WHERE beskrivelse=(?)
+        String query = "SELECT * FROM Øvelsesgruppe WHERE Beskrivelse=(?)" ; //WHERE beskrivelse=(?)
         try {
-            ps = conn.prepareStatement("INSERT INTO Ovelsesgruppe (Beskrivelse) VALUES (?)");
+            ps = conn.prepareStatement("INSERT INTO Øvelsesgruppe (Beskrivelse) VALUES (?)");
             ps.setString(1, this.beskrivelse);
 
 
-            String query2 = "SELECT * FROM Ovelsesgruppe Where Beskrivelse ='" + this.beskrivelse + "';";
+            String query2 = "SELECT * FROM Øvelsesgruppe Where Beskrivelse ='" + this.beskrivelse + "';";
             PreparedStatement st3 = conn.prepareStatement(query2);
             ResultSet rs = st3.executeQuery(query2);
             String duplicate = " ";
@@ -47,17 +45,14 @@ public class Ã˜velsesgruppe extends DBConn {
 
         }
         catch (Exception e) {
-            System.out.println("db error during prepare of insert into treningsokt " + e);
+            System.out.println("db error during prepare of insert into treningsøkt " + e);
         }
     }
 
 
 
-
-
-
     public static void main(String[] args) {
-        Ã˜velsesgruppe og = new Ã˜velsesgruppe("tut og kjÃ¸r");
+        Ovelsesgruppe og = new Ovelsesgruppe("tut og kjør");
 
     }
 
