@@ -71,7 +71,38 @@ public class Main extends DBConn{
     }
 
     public void registrerOvelse(){
-    	
+    	System.out.println("Registrer øvelse med apparat (y) eller uten apparat (n):");
+    	String input = sc.nextLine();
+    	char apparat = input.charAt(0);
+    	if (apparat == 'y') {
+    		System.out.println("Legg inn følgende: ");
+    		System.out.println("Navn: ");
+    		String navn = sc.nextLine();
+    		System.out.println("Antall kilo: ");
+    		int kilo = sc.nextInt();
+    		System.out.println("Antall sett: ");
+    		int sett = sc.nextInt();
+    		
+    		System.out.println("Du har registrert følgende: \n \n" +
+    				"Navn: " + navn + "\n" +
+    				"Antall kilo: " + kilo + "\n" +
+    				"Antall sett: " + sett + "\n");
+    		
+    		Ovelse o = new Ovelse(navn, kilo, sett);
+    		}
+    	if (apparat == 'n') {
+    		System.out.println("Legg inn følgende: ");
+    		System.out.println("Navn: ");
+    		String navn  = sc.nextLine();
+    		System.out.println("Beskrivelse: ");
+    		String beskrivelse = sc.nextLine();
+    		
+    		System.out.println("Du har registrert følgende: \n \n" +
+    				"Navn: " + navn + "\n" +
+    				"Beskrivelse: " + beskrivelse + "\n");
+    		
+    		Ovelse o = new Ovelse (navn, beskrivelse);
+    		}
 
     }
     

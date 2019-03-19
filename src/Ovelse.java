@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class reg_ovelse extends DBConn{
+public class Ovelse extends DBConn{
 	
 	private String name;
 	private PreparedStatement st;
@@ -14,7 +14,7 @@ public class reg_ovelse extends DBConn{
 	private String beskrivelse;
 	
 	
-	public reg_ovelse(String name, int kilo, int sett) {
+	public Ovelse(String name, int kilo, int sett) {
 		this.name = name;
 		this.apparat = 'y';
 		this.kilo = kilo;
@@ -23,7 +23,7 @@ public class reg_ovelse extends DBConn{
 		this.registrer();
 	}
 	
-	public reg_ovelse(String name, String beskrivelse) {
+	public Ovelse(String name, String beskrivelse) {
 		this.name = name;
 		this.apparat = 'n';
 		this.beskrivelse = beskrivelse;
@@ -77,7 +77,7 @@ public class reg_ovelse extends DBConn{
 	}
 	
 	public static void main(String[] args) {
-		reg_ovelse r1 = new reg_ovelse("Situp", "Fyfaen så hurtig");
+		Ovelse r1 = new Ovelse("Pushups", "Fyfaen så hurtig");
 		//reg_ovelse r2 = new reg_ovelse("Knebøy", 30, 3);
 		
 	}
