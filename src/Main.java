@@ -1,24 +1,50 @@
+package src;
+
+import java.util.Scanner;
 
 public class Main {
     Scanner sc = new Scanner(System.in);
 
-    privat void registrerTreningsøkt(){
+    public void registrerTreningsøkt(){
+    	System.out.println("Registrer en ny treningsøkt ved å fylle inn disse feltene:");
+    	System.out.println("Dato (ÅÅÅÅ-MM-DD): ");
+    	String dato = sc.nextLine();
+    	System.out.println("Klokkeslett (TT:MM:SS): ");
+    	String tid = sc.nextLine();
+    	System.out.println("Varighet (Minutter): ");
+    	int varighet = sc.nextInt();
+    	System.out.println("Personlig form (Heltall mellom 0 og 10): ");
+    	int form = sc.nextInt();
+    	System.out.println("Prestasjon (Heltall mellom 0 og 10): ");
+    	int prestasjon = sc.nextInt();
+    	System.out.println("Notat: ");
+    	String notat = sc.nextLine();
+    	System.out.println();
+    	
+    	System.out.println(dato+tid+Integer.toString(varighet)+ Integer.toString(form) + Integer.toString(prestasjon) + notat);
+    	
+    	
 
     }
 
-    privat void registrerApparat(){
+    public void registrerApparat(){
 
     }
 
-    privat void registrerØvelse(){
+    public void registrerØvelse(){
+
+    }
+    
+    public void hentResultater() {
+    	
+    }
+    
+
+    public void registrerØvelsesGruppe(){
 
     }
 
-    privat void registrerØvelsesGruppe(){
-
-    }
-
-    privat void finnFavoritt(){
+    public void finnFavoritt(){
 
     }
 
@@ -27,12 +53,13 @@ public class Main {
 
         while(true) {
             System.out.println("Hei");
-            System.out.println("1 - Legg inn ny treningsøkt");
+            System.out.println("1 - Legg inn ny treningsøkt i databasen");
             System.out.println("2 - Legg inn nytt apparat i databasen");
             System.out.println("3 - Legg inn ny øvelse i databasen");
-            System.out.println("4 - Registrer øvelsesgruppe");
-            System.out.println("5 - Finn dine favorittøvelser");
-            System.out.println("Velg 1, 2, 3, 4 eller 5");
+            System.out.println("4 - Hent resultater for øvelse");
+            System.out.println("5 - Registrer øvelsesgruppe");
+            System.out.println("6 - Finn dine favorittøvelser");
+            System.out.println("Velg 1, 2, 3, 4, 5 eller 6");
             int scase = Integer.parseInt(m.sc.nextLine());
             switch (scase) {
                 case 1:
@@ -45,12 +72,16 @@ public class Main {
                     m.registrerØvelse();
                     break;
                 case 4:
+                		m.hentResultater();
+                		break;
+                case 5:
                     m.registrerØvelsesGruppe();
                     break;
-                case 5:
+                case 6:
                     m.finnFavoritt();
                     break;
             }
         }
     }
+}
 
