@@ -21,13 +21,13 @@ public class Ovelsesgruppe extends DBConn {
 
         connect();
 
-        String query = "SELECT * FROM Øvelsesgruppe WHERE Beskrivelse=(?)" ; //WHERE beskrivelse=(?)
+        String query = "SELECT * FROM Ã˜velsesgruppe WHERE Beskrivelse=(?)" ; //WHERE beskrivelse=(?)
         try {
-            ps = conn.prepareStatement("INSERT INTO Øvelsesgruppe (Beskrivelse) VALUES (?)");
+            ps = conn.prepareStatement("INSERT INTO Ã˜velsesgruppe (Beskrivelse) VALUES (?)");
             ps.setString(1, this.beskrivelse);
 
 
-            String query2 = "SELECT * FROM Øvelsesgruppe Where Beskrivelse ='" + this.beskrivelse + "';";
+            String query2 = "SELECT * FROM Ã˜velsesgruppe Where Beskrivelse ='" + this.beskrivelse + "';";
             PreparedStatement st3 = conn.prepareStatement(query2);
             ResultSet rs = st3.executeQuery(query2);
             String duplicate = " ";
@@ -45,14 +45,14 @@ public class Ovelsesgruppe extends DBConn {
 
         }
         catch (Exception e) {
-            System.out.println("db error during prepare of insert into treningsøkt " + e);
+            System.out.println("db error during prepare of insert into treningsÃ¸kt " + e);
         }
     }
 
 
 
     public static void main(String[] args) {
-        Ovelsesgruppe og = new Ovelsesgruppe("tut og kjør");
+        Ovelsesgruppe og = new Ovelsesgruppe("tut og kjÃ¸r");
 
     }
 
