@@ -37,7 +37,7 @@ public class Main extends DBConn{
 	    	int prestasjon = sc.nextInt();
 	    	
 	    	sc.nextLine();
-	    	System.out.println("Notat (maks x symboler): ");
+	    	System.out.println("Notat (maks 100 symboler): ");
 	    	String notat = sc.nextLine();
 	    	
 	    	System.out.println();
