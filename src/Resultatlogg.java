@@ -46,7 +46,6 @@ public class Resultatlogg extends DBConn{
 				+ " AND Navn ='" + this.øvelse + "';"; 
 		String periode = "Resultater for " + "'" + this.øvelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
 		System.out.println(periode);
-		System.out.println(query);
 		try {
 			connect();
 			ps = conn.prepareStatement(query);
@@ -86,7 +85,7 @@ public class Resultatlogg extends DBConn{
 				String beskrivelse = rs.getString("Beskrivelse");
 				int Okt = rs.getInt("TreningsøktID");
 				
-				this.result = "\n" + "Økt:" + Integer.toString(Okt) + "Beskrivelse: " + beskrivelse;
+				this.result += "\n" + "Økt:" + Integer.toString(Okt) + " Beskrivelse: " + beskrivelse + "\n";
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

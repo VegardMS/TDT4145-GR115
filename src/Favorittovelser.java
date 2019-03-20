@@ -37,14 +37,12 @@ public class Favorittovelser extends DBConn {
 
             ps.execute();
 
-            System.out.println(favoritter);
-
-
 
         }
         catch (Exception e){
             System.out.println(e);
         }
+        System.out.println(favoritter);
 
     }
 
