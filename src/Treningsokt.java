@@ -58,7 +58,7 @@ public class Treningsokt extends DBConn {
 			Integer OvelseID = null;
 
 
-			String query2 = "SELECT øvelseID FROM øvelse Where Navn ='" + Ovelse + "';";
+			String query2 = "SELECT øvelseID FROM Øvelse Where Navn ='" + Ovelse + "';";
 			PreparedStatement st3 = conn.prepareStatement(query2);
 			ResultSet pes = st3.executeQuery(query2);
 
@@ -67,16 +67,15 @@ public class Treningsokt extends DBConn {
 			}
 
 			while(pes.next()){
-				OvelseID = pes.getInt("øvelseID");
+				OvelseID = pes.getInt("ØvelseID");
 			}
 
 			if(OktID.equals(null)|| OvelseID.equals(null)){
 				throw new IllegalArgumentException("Du må registrere øvelsen først!");
 			}
-			System.out.println(OktID);
-			System.out.println(OvelseID);
+			
 
-			prep = conn.prepareStatement("INSERT * INTO Inneholder@velse(TreningsøktID,ØvelseID) VALUES ((?),(?))");
+			prep = conn.prepareStatement("INSERT INTO InneholderØvelse(TreningsøktID,ØvelseID) VALUES ((?),(?))");
 			prep.setInt(1,OktID);
 			prep.setInt(2,OvelseID);
 
@@ -114,10 +113,10 @@ public class Treningsokt extends DBConn {
 	}
 
 	public static void main(String[] args) {
-		LocalDate d = LocalDate.of(2028,03,19);
+		LocalDate d = LocalDate.of(2008,03,19);
 		System.out.println(d);
-		Time t = new Time(8,42,00);
-		Treningsokt t4 = new Treningsokt(d, t, 55, 9, 9, "Fikk gnagsår");
+		Time t = new Time(04,42,00);
+		Treningsokt t4 = new Treningsokt(d, t, 55, 8, 9, "Syk");
 		t4.leggTilOvelse("Knebøy");
 
 

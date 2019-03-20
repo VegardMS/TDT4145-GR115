@@ -39,12 +39,10 @@ public class Tilhorer extends DBConn {
             int GID = 0;
             while (rs.next()){
                 OID = rs.getInt("ØvelseID");
-
             }
 
             while(sr.next()){
                 GID = sr.getInt("GruppeID");
-
             }
 
 

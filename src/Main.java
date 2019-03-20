@@ -52,6 +52,13 @@ public class Main extends DBConn{
     	
     	Treningsokt treningsokt = new Treningsokt(dato, tid, varighet, form, prestasjon, notat);
     	
+    System.out.println("Vil du legge til en øvelse i økta? (ja/nei)?");
+    	while (!sc.nextLine().equals("nei")) {
+    		System.out.println("Hva heter øvelsen du vil legge til?");
+    		String ovelse = sc.nextLine();
+    		treningsokt.leggTilOvelse(ovelse);
+    		System.out.println("Vil du legge til enda en øvelse i økta? (ja/nei)?");
+    	}
    
     }
 
@@ -85,8 +92,8 @@ public class Main extends DBConn{
     		
     		System.out.println("Du har registrert følgende: \n \n" +
     				"Navn: " + navn + "\n" +
-    				"Antall kilo: " + kilo + "\n" +
-    				"Antall sett: " + sett + "\n");
+    				"Antall kilo: " + Integer.toString(kilo) + "\n" +
+    				"Antall sett: " + Integer.toString(sett) + "\n");
     		
     		Ovelse o = new Ovelse(navn, kilo, sett);
     		}
@@ -107,17 +114,34 @@ public class Main extends DBConn{
     }
     
     public void hentResultater() {
+    		System.out.println("Hent ut resultater for øvelse (navn på øvelse): ");
+    		String øvelse = sc.nextLine();
+    		System.out.println("Er øvelsen med apparat (y) eller uten apparat (n)? ");
+    		String input = sc.nextLine();
+    		char apparat = input.charAt(0);
+    		System.out.println("Periode fra: (ÅÅÅÅ-MM-DD): ");
+    		
+    		
     	
     }
     
 
     public void registrerovelsesGruppe(){
+    		System.out.println("Legg inn beskrivelse for øvelsesgruppen du vil lage?");
+    		String beskrivelse = sc.nextLine();
+    		Ovelsesgruppe ovelsesgruppe = new Ovelsesgruppe(beskrivelse);
 
     }
 
     public void finnFavoritt(){
 
     }
+    
+    public void hentOkter() {
+		System.out.println("Hvor mange økter vil du hente ut?");
+		String antall = sc.nextLine();
+		hentOkter h = new hentOkter(Integer.parseInt(antall));
+}
 
     public static void main(String[] args) throws Exception {
         Main m = new Main();
@@ -130,7 +154,8 @@ public class Main extends DBConn{
             System.out.println("4 - Hent resultater for øvelse");
             System.out.println("5 - Registrer øvelsesgruppe");
             System.out.println("6 - Finn dine favorittøvelser");
-            System.out.println("Velg 1, 2, 3, 4, 5 eller 6");
+            System.out.println("7 - Hent ut dine siste økter");
+            System.out.println("Velg 1, 2, 3, 4, 5, 6 eller 7");
             int scase = Integer.parseInt(m.sc.nextLine());
             switch (scase) {
                 case 1:
@@ -143,14 +168,17 @@ public class Main extends DBConn{
                     m.registrerOvelse();
                     break;
                 case 4:
-                	m.hentResultater();
-                	break;
+                		m.hentResultater();
+                		break;
                 case 5:
                     m.registrerovelsesGruppe();
                     break;
                 case 6:
                     m.finnFavoritt();
                     break;
+                case 7:
+                		m.hentOkter();
+                		break;
             }
         }
     }

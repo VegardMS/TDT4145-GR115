@@ -1,5 +1,6 @@
 package src;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,13 +11,13 @@ public class Resultatlogg extends DBConn{
 	private PreparedStatement ps;
 	private ResultSet rs;
 	private String result = "";
-	private String Ovelse;
-	private Date fraDato;
-	private Date tilDato;
+	private String øvelse;
+	private LocalDate fraDato;
+	private LocalDate tilDato;
 	private char apparat;
 	
-	public Resultatlogg(String Ovelse, Date fraDato, Date tilDato, char apparat) {
-		this.Ovelse = Ovelse;
+	public Resultatlogg(String øvelse, LocalDate fraDato, LocalDate tilDato, char apparat) {
+		this.øvelse = øvelse;
 		this.fraDato = fraDato;
 		this.tilDato = tilDato;
 		this.apparat = apparat;
@@ -38,13 +39,14 @@ public class Resultatlogg extends DBConn{
 		String fra = fraDato.toString();
 		String til = tilDato.toString();
 		
-		String query = "SELECT * FROM (Øvelse NATURAL JOIN ØvelsePåApparat "
+		String query = "SELECT * FROM (Øvelse NATURAL JOIN ØvelsePåApparat"
 				+ " NATURAL JOIN Treningsøkt "
 				+ " NATURAL JOIN InneholderØvelse) "
-				+ "WHERE (Dato BETWEEN " + this.fraDato + " AND " + this.tilDato + ")"
-				+ " AND Navn ='" + this.Ovelse + "';"; 
-		String periode = "Resultater for " + "'" + this.Ovelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
+				+ "WHERE (Dato BETWEEN '" + this.fraDato + "' AND '" + this.tilDato + "')"
+				+ " AND Navn ='" + this.øvelse + "';"; 
+		String periode = "Resultater for " + "'" + this.øvelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
 		System.out.println(periode);
+		System.out.println(query);
 		try {
 			connect();
 			ps = conn.prepareStatement(query);
@@ -56,7 +58,7 @@ public class Resultatlogg extends DBConn{
 				int sett = rs.getInt("AntallSett");
 				int Okt = rs.getInt("TreningsøktID");
 				
-				this.result = "\n" + "Økt:" + Integer.toString(Okt) + " Antall kilo:" + Integer.toString(vekt) +  " Antall sett:" + Integer.toString(sett) + "\n";
+				this.result += "\n" + "Økt:" + Integer.toString(Okt) + " Antall kilo:" + Integer.toString(vekt) +  " Antall sett:" + Integer.toString(sett) + "\n";
 				//System.out.println(result);
 			}
 		}
@@ -69,11 +71,12 @@ public class Resultatlogg extends DBConn{
 	}
 	
 	public String hentResultatUtenApparat() {
-		String periode = "Resultater for " + "'" + this.Ovelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
-		String query = "SELECT * FROM (Øvelse INNER JOIN ØvelseUtenApparat ON (Øvelse.ØvelseID = ØvelseUtenApparat.ØvelseID3))"
+		String periode = "Resultater for " + "'" + this.øvelse + "'" + " i perioden fra " + this.fraDato + " til " + this.tilDato + ":";
+		String query = "SELECT * FROM (Øvelse NATURAL JOIN ØvelseUtenApparat "
 				+ "NATURAL JOIN Treningsøkt "
-				+ "NATURAL JOIN InneholderØvelse) "
-				+ "WHERE Navn ='" + this.Ovelse + "';"; 
+				+ "NATURAL JOIN InneholderØvelse)"
+				+ "WHERE Navn ='" + this.øvelse + "';"; 
+		System.out.println(periode);
 		connect();
 		try {
 			ps = conn.prepareStatement(query);
@@ -97,8 +100,8 @@ public class Resultatlogg extends DBConn{
 	}
 	
 	public static void main(String[] args) {
-		Date fra = new Date(2017, 1, 1);
-		Date til = new Date (2019, 3, 14);
+		LocalDate fra = LocalDate.of(2018,10,9);
+		LocalDate til = LocalDate.of(4000, 04, 10);
 		Resultatlogg rl = new Resultatlogg("Situp", fra, til,'y');
 		
 	}
