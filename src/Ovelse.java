@@ -80,5 +80,6 @@ public class Ovelse extends DBConn{
 		Ovelse r1 = new Ovelse("Pushups", "Fyfaen så hurtig");
 		//reg_ovelse r2 = new reg_ovelse("Knebøy", 30, 3);
 		
+		
 	}
 }
