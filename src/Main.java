@@ -9,10 +9,10 @@ public class Main extends DBConn{
     Scanner sc = new Scanner(System.in);
 
     public void registrerTreningsokt() throws ParseException{
-    	System.out.println("Registrer en ny treningsÃ¸kt ved Ã¥ fylle inn disse feltene: ");
+    	System.out.println("Registrer en ny treningsøkt ved å fylle inn disse feltene: ");
     	
     	//Henter inn dato fra bruker og oppretter nytt LocalDate-objekt
-    	System.out.println("Dato (Ã…Ã…Ã…Ã…-MM-DD): ");
+    	System.out.println("Dato (ÅÅÅÅ-MM-DD): ");
     	String datoString = sc.nextLine();
     	String[] numbers = datoString.split("-");
     	int[] ints = new int[numbers.length];
@@ -42,7 +42,7 @@ public class Main extends DBConn{
     	
     	System.out.println();
     	
-    	System.out.println("Du har registrert fÃ¸lgende: \n \n" +
+    	System.out.println("Du har registrert følgende: \n \n" +
     						"Dato: " + dato + "\n" +
     						"Tid: " + tid + "\n" +
     						"Varighet: " + Integer.toString(varighet) + "\n" +
@@ -52,17 +52,23 @@ public class Main extends DBConn{
     	
     	Treningsokt treningsokt = new Treningsokt(dato, tid, varighet, form, prestasjon, notat);
     	
-   
+    	//Så må man kunne legge øvelser til økta
+    	System.out.println("Vil du legge til en øvelse i økta? (skriv 'nei' for å avslutte)?");
+    	while (sc.nextLine() != "nei") {
+    		System.out.println("Hva heter øvelsen du vil legge til?");
+    		String ovelse = sc.nextLine();
+    		treningsokt.leggTilOvelse(ovelse);
+    	}
     }
 
     public void registrerApparat(){
-    	System.out.println("Registrer et nytt apparat ved Ã¥ legge inn fÃ¸lgende:");
+    	System.out.println("Registrer et nytt apparat ved å legge inn følgende:");
     	System.out.println("Navn: ");
     	String navn = sc.nextLine();
     	System.out.println("Funksjon: ");
     	String funksjon = sc.nextLine();
     	
-    System.out.println("Du har registrert fÃ¸lgende: \n \n" +
+    System.out.println("Du har registrert følgende: \n \n" +
 				"Navn: " + navn + "\n" +
 				"Funksjon: " + funksjon + "\n");
     	
@@ -71,11 +77,11 @@ public class Main extends DBConn{
     }
 
     public void registrerOvelse(){
-    	System.out.println("Registrer Ã¸velse med apparat (y) eller uten apparat (n):");
+    	System.out.println("Registrer øvelse med apparat (y) eller uten apparat (n):");
     	String input = sc.nextLine();
     	char apparat = input.charAt(0);
     	if (apparat == 'y') {
-    		System.out.println("Legg inn fÃ¸lgende: ");
+    		System.out.println("Legg inn følgende: ");
     		System.out.println("Navn: ");
     		String navn = sc.nextLine();
     		System.out.println("Antall kilo: ");
@@ -83,7 +89,7 @@ public class Main extends DBConn{
     		System.out.println("Antall sett: ");
     		int sett = sc.nextInt();
     		
-    		System.out.println("Du har registrert fÃ¸lgende: \n \n" +
+    		System.out.println("Du har registrert følgende: \n \n" +
     				"Navn: " + navn + "\n" +
     				"Antall kilo: " + kilo + "\n" +
     				"Antall sett: " + sett + "\n");
@@ -91,13 +97,13 @@ public class Main extends DBConn{
     		Ovelse o = new Ovelse(navn, kilo, sett);
     		}
     	if (apparat == 'n') {
-    		System.out.println("Legg inn fÃ¸lgende: ");
+    		System.out.println("Legg inn følgende: ");
     		System.out.println("Navn: ");
     		String navn  = sc.nextLine();
     		System.out.println("Beskrivelse: ");
     		String beskrivelse = sc.nextLine();
     		
-    		System.out.println("Du har registrert fÃ¸lgende: \n \n" +
+    		System.out.println("Du har registrert følgende: \n \n" +
     				"Navn: " + navn + "\n" +
     				"Beskrivelse: " + beskrivelse + "\n");
     		
@@ -111,25 +117,27 @@ public class Main extends DBConn{
     }
     
 
-    public void registrerovelsesGruppe(){
-
+    public void opprettOvelsesGruppe(){
+    	System.out.println("Legg inn beskrivelse for øvelsesgruppen du vil lage?");
+    	String beskrivelse = sc.nextLine();
+    	Ovelsesgruppe ovelsesgruppe = new Ovelsesgruppe(beskrivelse);
     }
 
     public void finnFavoritt(){
-
+    		
     }
 
     public static void main(String[] args) throws Exception {
         Main m = new Main();
 
         while(true) {
-            System.out.println("Hei, hva vil du gjÃ¸re? \n");
-            System.out.println("1 - Legg inn ny treningsÃ¸kt i databasen");
+            System.out.println("Hei, hva vil du gjøre? \n");
+            System.out.println("1 - Legg inn ny treningsøkt i databasen");
             System.out.println("2 - Legg inn nytt apparat i databasen");
-            System.out.println("3 - Legg inn ny Ã¸velse i databasen");
-            System.out.println("4 - Hent resultater for Ã¸velse");
-            System.out.println("5 - Registrer Ã¸velsesgruppe");
-            System.out.println("6 - Finn dine favorittÃ¸velser");
+            System.out.println("3 - Legg inn ny øvelse i databasen");
+            System.out.println("4 - Hent resultater for øvelse");
+            System.out.println("5 - Opprett øvelsesgruppe");
+            System.out.println("6 - Finn dine favorittøvelser");
             System.out.println("Velg 1, 2, 3, 4, 5 eller 6");
             int scase = Integer.parseInt(m.sc.nextLine());
             switch (scase) {
@@ -146,7 +154,7 @@ public class Main extends DBConn{
                 	m.hentResultater();
                 	break;
                 case 5:
-                    m.registrerovelsesGruppe();
+                    m.opprettOvelsesGruppe();
                     break;
                 case 6:
                     m.finnFavoritt();
